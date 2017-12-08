@@ -1,0 +1,12 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url  "http://pyze.bintray.com/pyze-android"
+        }
+    }
+}
+
+dependencies {
+    compile 'com.pyze:PyzeLibrary:3.0.2'
+}

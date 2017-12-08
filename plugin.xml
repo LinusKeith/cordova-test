@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-pyze-cordova" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>PyzeCordova</name>
+    <js-module name="PyzeCordova" src="www/PyzeCordova.js">
+         <clobbers target="Pyze" />
+         <clobbers target="pyze" />
+    </js-module>
+    <platform name="android">
+		<config-file target="config.xml" parent="/*">
+			<feature name="PyzeCordova">
+                <param name="android-package" value="com.pyze.cordova.PyzeCordova"/>
+                <param name="onload" value="true" />
+			</feature>
+		</config-file>
+         <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+        </config-file>
+		<source-file src="src/android/com/pyze/cordova/PyzeCordova.java" target-dir="src/com/pyze/cordova" />
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+	</platform>
+	<platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="PyzeCordova">
+                <param name="ios-package" value="PyzeCordova"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/PyzeCordova.h" />
+        <source-file src="src/ios/PyzeCordova.m" />
+		<framework src="pyze-sdk-iOS" type="podspec" spec="~> 3.5" />
+    </platform>
+</plugin>
